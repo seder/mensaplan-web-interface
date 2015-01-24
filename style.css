@@ -1,0 +1,98 @@
+body{
+  font-family: Liberation Sans, Droid Sans, Helvetica, Verdana, Sans;
+  font-size:1em;
+  max-width:800px;
+  background-color: #e9f1f4;
+}
+
+nav {
+  display: table;
+  width: 100%;
+  background-color: #9bbbca;
+  padding-top:2%;
+  padding-bottom:2%;
+  border-radius:5px;
+  margin-top:1%;
+  text-align:center;
+}
+
+nav > a {
+  display: table-cell;
+  text-align: center;
+  margin: 5%;
+  cursor: pointer;
+  width:16%;
+}
+
+span {
+  display: table;
+  width: 48%;
+  float: left;
+}
+
+#seperator{
+  width:4%;
+}
+
+span > a {
+  display: table-cell;
+  text-align: center;
+  cursor: pointer;
+}
+
+a:visited {
+  color:#000;
+}
+
+a:hover {
+  color:#fff;
+}
+
+.mealFrame{
+  color: #000;
+  padding:1%;
+  background-color: #fff;
+  margin-top: 1%;
+  padding: 2%;
+  border-radius:5px;
+}
+
+a {
+  color:#000;
+  text-decoration:none;
+}
+
+.category{
+  font-weight:bold;
+}
+
+.meal{
+
+}
+
+#bottom{
+  color: #000;
+  padding:1%;
+  background-color: #9bbbca;
+  margin-top: 1%;
+  padding: 2%;
+  border-radius:5px;
+  text-align:right;
+}
+
+#selector{
+  width:90%;
+  font-size:1em;
+  background-color:#9bbbca;
+  border: 1px solid #fff;
+  border-radius: 2px;
+}
+
+.price{
+  text-align:right;
+  font-style:italic;
+}
+
+.active{
+  color:#ffffff;
+}

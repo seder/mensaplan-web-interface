@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width"> 
+<html>
+<head>
+  <title>
+  Mensaplan der Uni Ulm by FS-ET
+  </title>
+  <meta charset="utf-8" />
+  <script src="libs/jquery-1.9.1.js"></script>
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload="init()">
+  <div class="navContainer">
+  <nav>
+     <select id="selector">
+      <option id="facilityMensa">Mensa Uni</option>
+      <option id="facilityBistro">Bistro</option>
+      <option id="facilityWest">Cafeteria West</option>
+      <option id="facilityDiner">WestSideDiner</option>
+      <option id="facilityBurgerbar">Burgerbar Cafeteria SouthSide</option>
+      <option id="facilityPrittwitzstr">Mensa Hochschule</option>
+    </select>
+  </nav>
+  <nav>
+    <span>
+      <a id="day0" onclick="openDay(0)">Mo</a>
+      <a id="day1" onclick="openDay(1)">Di</a>
+      <a id="day2" onclick="openDay(2)">Mi</a>
+      <a id="day3" onclick="openDay(3)">Do</a>
+      <a id="day4" onclick="openDay(4)">Fr</a>
+    </span>
+    <span id="seperator">|</span>
+    <span id="2ndWeek">
+      <a id="day5" onclick="openDay(5)">Mo</a>
+      <a id="day6" onclick="openDay(6)">Di</a>
+      <a id="day7" onclick="openDay(7)">Mi</a>
+      <a id="day8" onclick="openDay(8)">Do</a>
+      <a id="day9" onclick="openDay(9)">Fr</a>
+    </span>
+  </nav>
+  </div>
+  <div id="plan">
+  </div>
+  <div class="navContainer">
+    <div id="bottom">
+      <a href="http://www.studentenwerk-ulm.de/index.php?id=25728">Quelle</a> | <a href="http://www.uni-ulm.de/mensaplan/data/">Rohdaten</a>
+| <a href="http://www.uni-ulm.de/mensaplan/impressum.html">Impressum</a>
+    </div>
+  </div>
+  <script>
+
+  var facility;
+  var date;
+  var planOfTheDay;
+  var daysArray = [];
+  var mensen = {"Mensa Uni":"Mensa", "Bistro":"Bistro", "Cafeteria West":"West", "WestSideDiner":"Diner",
+                "Burgerbar Cafeteria SouthSide":"Burgerbar","Mensa Hochschule":"Prittwitzstr"};
+
+  function init(){
+
+    // get facility and date for the plan by parsing the anchor
+    var anchor = window.location.hash.substr(1);
+    if ( anchor == "" ){
+      //show plan for today
+      facility = 'Mensa';
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+
+      if(dd<10) {
+          dd='0'+dd
+      } 
+
+      if(mm<10) {
+          mm='0'+mm
+      } 
+
+      var yyyy = today.getFullYear();
+      date = yyyy + '-' + mm + '-' + dd;
+    } else {
+      facility = anchor.split('&')[0];
+      date = anchor.split('&')[1];
+    }
+    
+    getFoodPlan();
+  }
+
+  function getFoodPlan(){
+      var url = "/mensaplan/data/mensaplan.json";
+      $.getJSON(url, function(data){
+        noOfWeeks = data.weeks.length;
+        var x,y;
+        var found = false;
+        
+        for ( k=0; k<3; k++ ){
+          for ( i=0; i<data.weeks.length; i++){
+            for ( j=0; j<data.weeks[i].days.length; j++){
+              if(data.weeks[i].days[j].date == date){
+                found = true;
+                x = i;
+                y = j;
+              } 
+            }
+          }
+          if ( found == false ) {//closed today, maybe plan for tomorrow?
+            date = getISOStringOfDate(new Date(new Date(date).getTime() + 24 * 60 * 60 * 1000));
+          }
+          else break;
+        }
+
+        if ( data.weeks.length >= 2 ){
+          var mon1 = getDateOfISOWeek(data.weeks[0].weekNumber,2015);
+          var mon2 = getDateOfISOWeek(data.weeks[1].weekNumber,2015);
+          if (mon2<mon1) { // switch if weeks are out of order
+            tmp = mon1;
+            mon1 = mon2;
+            mon2 = tmp;  
+          }
+          var dateToAdd = mon1;
+          for ( i = 0; i < 5; i++ ){
+            daysArray[i] = getISOStringOfDate(dateToAdd);
+            document.getElementById("day"+i).textContent = dateToAdd.getDate() +  " " + document.getElementById("day"+i).textContent;
+            dateToAdd = new Date(dateToAdd.getTime() + 24 * 60 * 60 * 1000);
+          }
+          dateToAdd = mon2;
+          for ( i = 5; i < 10; i++ ){
+            daysArray[i] = getISOStringOfDate(dateToAdd);
+            document.getElementById("day"+i).textContent = dateToAdd.getDate() +  " " +document.getElementById("day"+i).textContent;
+            dateToAdd = new Date(dateToAdd.getTime() + 24 * 60 * 60 * 1000);
+          }
+        } else {        
+          document.getElementById('2ndWeek').style.display = "none";
+          var dateToAdd = getDateOfISOWeek(data.weeks[0].weekNumber,2015);
+          for ( i = 0; i < 5; i++ ){
+            daysArray[i] = getISOStringOfDate(dateToAdd);
+            document.getElementById("day"+i).textContent = dateToAdd.getDate() +  " " +document.getElementById("day"+i).textContent;
+            dateToAdd = new Date(dateToAdd.getTime() + 24 * 60 * 60 * 1000);
+          }
+        }
+                     
+        if ( found == true ) {
+          if ( facility == "Mensa"){
+            printPlan(data.weeks[x].days[y].Mensa);
+          }
+          if ( facility == "Bistro"){
+            printPlan(data.weeks[x].days[y].Bistro);
+          }
+          if ( facility == "West"){
+            printPlan(data.weeks[x].days[y].West);
+          }
+          if ( facility == "Prittwitzstr"){
+            printPlan(data.weeks[x].days[y].Prittwitzstr);
+          }
+        }
+        
+        if ( facility == "Diner" || facility == "Burgerbar"){
+          var url = "/mensaplan/data/mensaplan_static.json";
+          $.getJSON(url, function(data){
+
+            weekday = new Date(date).getDay()-1;
+
+            if ( weekday < 0 ||  weekday == 5 ){
+              weekday = 0;
+            }
+
+            if ( facility == "Burgerbar"){
+              printPlan(data.weeks[0].days[weekday].Burgerbar);
+            }
+            if ( facility == "Diner"){
+              printPlan(data.weeks[0].days[weekday].Diner);
+            }
+          });
+        }        
+        selectFacility();
+
+        var index = daysArray.indexOf(date);
+        if ( index != -1 ) 
+          document.getElementById("day"+index).className = "active";
+      });
+  }
+
+  document.getElementById("selector").onchange = function() {
+     openPage(this.value);
+     return false
+  };
+
+  function selectFacility() {
+      var sel = document.getElementById("selector");
+      var val = document.getElementById("facility"+ facility).value;
+      for(var i = 0, j = sel.options.length; i < j; ++i) {
+          if(sel.options[i].innerHTML === val) {
+             sel.selectedIndex = i;
+             break;
+          }
+      }
+  }
+
+  function printPlan(plan){
+    var oldTable = document.getElementById('plan'),
+    newTable = oldTable.cloneNode(true);
+    for(var i = 0; i < plan.meals.length; i++){
+        var tr = document.createElement('div');
+        tr.className = "mealFrame";
+        var td = document.createElement('div');
+        td.className = "category";
+        td.appendChild(document.createTextNode(plan.meals[i].category));
+        tr.appendChild(td);
+        var td = document.createElement('div');
+        td.className = "meal";
+        td.appendChild(document.createTextNode(plan.meals[i].meal));
+        tr.appendChild(td);
+        var td = document.createElement('div');
+        td.className = "price";
+        if( plan.meals[i].price != undefined)
+          td.appendChild(document.createTextNode(plan.meals[i].price));
+        tr.appendChild(td);
+        newTable.appendChild(tr);
+    }
+    oldTable.parentNode.replaceChild(newTable, oldTable);
+  }
+
+  function openPage(str){
+    facility = mensen[str]; 
+    window.location.assign('mensaplan.html#'+facility+"&"+date);
+    window.location.reload(true);
+  }  
+
+  function openDay(idx){
+    date = daysArray[idx];
+    window.location.assign('mensaplan.html#'+facility+"&"+date);
+    window.location.reload(true);
+  }
+
+  function getISOStringOfDate(date2){
+      var dd = date2.getDate();
+      var mm = date2.getMonth()+1; //January is 0!
+
+      if(dd<10) {
+          dd='0'+dd
+      } 
+
+      if(mm<10) {
+          mm='0'+mm
+      } 
+
+      var yyyy = date2.getFullYear();
+      return yyyy + '-' + mm + '-' + dd;
+  }  
+
+  function getDateOfISOWeek(w, y) {
+      var simple = new Date(y, 0, 1 + (w - 1) * 7);
+      var dow = simple.getDay();
+      var ISOweekStart = simple;
+      if (dow <= 4)
+          ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+      else
+          ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+      return ISOweekStart;
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+{
+
+    "weeks": 
+
+[
+
+{
+
+    "days": 
+
+[
+
+{
+
+"date": "Monday",
+"Burgerbar": 
+
+{
+
+    "meals": 
+
+[
+
+{
+
+    "category": "Veggie: Sunny Veggie Burger",
+    "meal": "mit Ruccola und Sauerrahm-Dip",
+    "price": "3,50€ | Menü: 4,95€"
+
+},
+{
+
+    "category": "Fleisch: Long Asia Chicken Burger",
+    "meal": "mit knackigem Eisbergsalat und Sweet Chili-Dip",
+    "price": "3,50€ | Menü: 4,75€"
+
+},
+{
+
+    "category": "Extra: Crisp Cut Potatoes",
+    "meal": "knusprige Kartoffel-Gitter mit mildem Salsageschmack",
+    "price": "1,80€"
+
+},
+{
+
+    "category": "Portion Pommes",
+    "meal": "mit Ketchup oder Mayonnaise",
+    "price": "1,50€"
+
+}
+    ],
+    "open": true
+
+},
+"Diner":
+{
+
+    "meals": 
+
+[
+
+{
+
+    "category": "Pizzaschnitte",
+    "meal": "",
+    "price": "2,30€"
+
+},
+{
+
+    "category": "Currywurst",
+    "meal": "",
+    "price": "2,50€ | Menü 4,25€"
+
+},
+{
+
+    "category": "Currywurst mit Zwiebel",
+    "meal": "",
+    "price": "2,90€ | Menü 4,65€"
+
+},
+{    
+    "category": "Portion Pommes",
+    "meal": "",
+    "price": "1,50€"
+
+}
+],
+"open": true
+}
+},
+{
+
+"date": "Tuesday",
+"Burgerbar": 
+
+{
+
+    "meals": 
+
+[
+
+{
+
+    "category": "Veggie: Hanfburger",
+    "meal": "der etwas andere Burger",
+    "price": "3,50€ | Menü: 4,95€"
+
+},
+{
+
+    "category": "Fleisch: Steakhouse Burger",
+    "meal": "der Klassiker mit Fleisch und BBQ-Dip",
+    "price": "3,90€ | Menü: 5,35€"
+
+},
+{
+
+    "category": "Fleisch: Big Steakhouse Burger",
+    "meal": "mit doppelt Fleisch und BBQ-Dip",
+    "price": "4,90€ | Menü: 6,35€"
+
+},
+{
+
+    "category": "Extra: Potato Wedges",
+    "meal": "würzige Kartoffelspalten mit Sour Cream (Sauerrahm)",
+    "price": "1,80€"
+
+},
+{
+
+    "category": "Portion Pommes",
+    "meal": "mit Ketchup oder Mayonnaise",
+    "price": "1,50€"
+
+}
+    ],
+    "open": true
+
+},
+"Diner":
+{
+
+    "meals": 
+
+[
+
+{
+
+    "category": "Leberkäswecken",
+    "meal": "",
+    "price": "1,70€"
+
+},
+{
+
+    "category": "WestSideBurger Special",
+    "meal": "mit Pulled Pork",
+    "price": "3,90€ | Menü 5,65€"
+
+},
+{
+
+    "category": "7 Stück Falaffel mit Quark-Dip",
+    "meal": "",
+    "price": "3,20€"
+
+},
+{    
+    "category": "Portion Pommes",
+    "meal": "",
+    "price": "1,50€"
+
+}
+],
+"open": true
+}
+},
+
+{
+
+"date": "Wednesday",
+"Burgerbar": 
+
+{
+
+    "meals": 
+
+[
+
+{
+
+    "category": "Veggie: Texican Burger",
+    "meal": "Reis mit Hirtenkäse, Kidneybohnen und Mais",
+    "price": "3,90€ | Menü: 5,35€"
+
+},
+{
+
+    "category": "Fleisch: Big Rösti Burger",
+    "meal": "der Berg grüßt mit knusprigem Bacon und Käse",
+    "price": "4,30€ | Menü: 5,75€"
+
+},
+{
+
+    "category": "Extra: Chicken Nuggets",
+    "meal": "würzig paniert und goldgelb gebacken",
+    "price": "6 Stück 2,50€ | 9 Stück 3,50€"
+
+},
+{
+
+    "category": "Portion Pommes",
+    "meal": "mit Ketchup oder Mayonnaise",
+    "price": "1,50€"
+
+}
+    ],
+    "open": true
+
+},
+"Diner":
+{
+
+    "meals": 
+
+[
+
+{
+
+    "category": "Pizzaschnitte",
+    "meal": "",
+    "price": "2,30€"
+
+},
+{
+
+    "category": "Steakhouse Burger",
+    "meal": "",
+    "price": "3,90€ | Menü 5,65€"
+
+},
+{
+
+    "category": "6 Gemüse-Nuggets mit Dip",
+    "meal": "",
+    "price": "2,90€"
+
+}
+],
+"open": true
+}
+},
+{
+
+"date": "Thursday",
+"Burgerbar": 
+
+{
+
+    "meals": 
+
+[
+
+{
+
+    "category": "Veggie: Couscous Burger",
+    "meal": "mit hausgemachtem Bratling, Grillgemüse und Curry-Dip",
+    "price": "3,90€ | Menü: 5,35€"
+
+},
+{
+
+    "category": "Fleisch: Onion Beef Burger",
+    "meal": "sehr lecker mit gebackenen Zwiebelringen und Knobi-Dip",
+    "price": "4,30€ | Menü: 5,75€"
+
+},
+{
+
+    "category": "Extra: Twister Pommes",
+    "meal": "spiralig geschnittene, gedrehte Pommes, knusprig frittiert",
+    "price": "1,80€"
+
+},
+{
+
+    "category": "Portion Pommes",
+    "meal": "mit Ketchup oder Mayonnaise",
+    "price": "1,50€"
+
+}
+    ],
+    "open": true
+
+},
+"Diner":
+{
+
+    "meals": 
+
+[
+
+{
+
+    "category": "Leberkäswecken",
+    "meal": "",
+    "price": "1,70€"
+
+},
+{
+
+    "category": "Steak vom Grill, mit Zwiebel oder Kräuterbutter",
+    "meal": "",
+    "price": "3,80€ | Menü 5,55€"
+
+},
+{
+
+    "category": "gebackener Camembert mit Preiselbeeren",
+    "meal": "",
+    "price": "2,80€"
+
+},
+{
+
+    "category": "Zwiebel oder Kräuterbutter extra",
+    "meal": "",
+    "price": "0,40€"
+
+}
+],
+"open": true
+}
+},
+{
+
+"date": "Friday",
+"Burgerbar": 
+
+{
+
+    "meals": 
+
+[
+
+{
+
+    "category": "Veggie: Feta-Burger",
+    "meal": "mit gebackenem Feta und Zaziki-Dip",
+    "price": "3,90€ | Menü: 5,35€"
+
+},
+{
+
+    "category": "Fleisch: South-Side Burger",
+    "meal": "mit Pulled Pork und weiteren Leckereien",
+    "price": "3,90€ | Menü: 5,35€"
+
+},
+{
+
+    "category": "Extra: Mozarella Sticks",
+    "meal": "knusprig gebacken",
+    "price": "6 Stück 3,30€ | 9 Stück 4,50€"
+
+},
+{
+
+    "category": "Portion Pommes",
+    "meal": "mit Ketchup oder Mayonnaise",
+    "price": "1,50€"
+
+}
+    ],
+    "open": true
+
+},
+"Diner":
+{
+
+    "meals": 
+
+[
+
+{
+
+    "category": "frische Weißwurst",
+    "meal": "",
+    "price": "2,00€"
+
+},
+{
+
+    "category": "Dönburger im Fladenbrot",
+    "meal": "",
+    "price": "3,50€ | Menü 5,25€"
+
+},
+{
+
+    "category": "Wedges Quarkdip",
+    "meal": "",
+    "price": "2,00€"
+
+}
+],
+"open": true
+}
+}
+]
+}
+]
+}
