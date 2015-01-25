@@ -221,13 +221,13 @@
 
   function openPage(str){
     facility = mensen[str]; 
-    window.location.assign('mensaplan.html#'+facility+"&"+date);
+    window.location.assign('#'+facility+"&"+date);
     window.location.reload(true);
   }  
 
   function openDay(idx){
     date = daysArray[idx];
-    window.location.assign('mensaplan.html#'+facility+"&"+date);
+    window.location.assign('#'+facility+"&"+date);
     window.location.reload(true);
   }
 
