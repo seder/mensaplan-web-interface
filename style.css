@@ -1,19 +1,32 @@
 body{
   font-family: Liberation Sans, Droid Sans, Helvetica, Verdana, Sans;
   font-size:1em;
-  max-width:800px;
-  background-color: #e9f1f4;
+  max-width:1134px;
+  background-color: #e5ebee;
+  padding-left:2%;
+  padding-right:2%;
+  padding-bottom:2%;
+	margin:0px auto;
+}
+
+#topNav{
+  background-color: #9bbbca;
+}
+
+#bottomNav{
+  background-color: #9bbbca;
 }
 
 nav {
   display: table;
   width: 100%;
-  background-color: #9bbbca;
-  padding-top:2%;
-  padding-bottom:2%;
-  border-radius:5px;
+  padding-top:1%;
+  padding-bottom:1%;
   margin-top:1%;
   text-align:center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c6d4de;
 }
 
 nav > a {
@@ -50,11 +63,13 @@ a:hover {
 
 .mealFrame{
   color: #000;
-  padding:1%;
+  padding: 2%;
   background-color: #fff;
   margin-top: 1%;
-  padding: 2%;
-  border-radius:5px;
+  width:96%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c6d4de;
 }
 
 a {
@@ -76,16 +91,18 @@ a {
   background-color: #9bbbca;
   margin-top: 1%;
   padding: 2%;
-  border-radius:5px;
+  width:96%;
   text-align:right;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c6d4de;
 }
 
 #selector{
-  width:90%;
+  width:96%;
   font-size:1em;
-  background-color:#9bbbca;
-  border: 1px solid #fff;
-  border-radius: 2px;
+  background-color:#fff;
+  border: 1px solid #c6d4de;
 }
 
 .price{
@@ -94,5 +111,5 @@ a {
 }
 
 .active{
-  color:#ffffff;
+  color:#fff;
 }
