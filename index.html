@@ -17,6 +17,7 @@
       <option id="facilityBistro">Bistro</option>
       <option id="facilityWest">Cafeteria West</option>
       <option id="facilityDiner">WestSideDiner</option>
+      <option id="facilityHochschulleitung">Cafeteria Hochschulleitung</option>
       <option id="facilityBurgerbar">Burgerbar Cafeteria SouthSide</option>
       <option id="facilityPrittwitzstr">Mensa Hochschule</option>
     </select>
@@ -54,7 +55,7 @@
   var planOfTheDay;
   var daysArray = [];
   var mensen = {"Mensa Uni":"Mensa", "Bistro":"Bistro", "Cafeteria West":"West", "WestSideDiner":"Diner",
-                "Burgerbar Cafeteria SouthSide":"Burgerbar","Mensa Hochschule":"Prittwitzstr"};
+                "Burgerbar Cafeteria SouthSide":"Burgerbar","Mensa Hochschule":"Prittwitzstr","Cafeteria Hochschulleitung":"Hochschulleitung"};
 
   function init(){
 
@@ -88,12 +89,16 @@
   function getFoodPlan(){
       var url = "/mensaplan/data/mensaplan.json";
       $.getJSON(url, function(data){
-        noOfWeeks = data.weeks.length;
+
+        var noOfWeeks = 1;
+        while ( data.weeks[noOfWeeks] != undefined ) noOfWeeks++;
+        console.log(noOfWeeks);
+  
         var x,y;
         var found = false;
-        
+
         for ( k=0; k<3; k++ ){
-          for ( i=0; i<data.weeks.length; i++){
+          for ( i=0; i<noOfWeeks; i++){
             for ( j=0; j<data.weeks[i].days.length; j++){
               if(data.weeks[i].days[j].date == date){
                 found = true;
@@ -108,7 +113,7 @@
           else break;
         }
 
-        if ( data.weeks.length >= 2 ){
+        if ( noOfWeeks >= 2 ){
           var mon1 = getDateOfISOWeek(data.weeks[0].weekNumber,2015);
           var mon2 = getDateOfISOWeek(data.weeks[1].weekNumber,2015);
           if (mon2<mon1) { // switch if weeks are out of order
@@ -150,6 +155,9 @@
           }
           if ( facility == "Prittwitzstr"){
             printPlan(data.weeks[x].days[y].Prittwitzstr);
+          }
+          if ( facility == "Hochschulleitung"){
+            printPlan(data.weeks[x].days[y].Hochschulleitung);
           }
         }
         
