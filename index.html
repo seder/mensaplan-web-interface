@@ -19,6 +19,7 @@
       <option id="facilityDiner">WestSideDiner</option>
       <!--<option id="facilityHochschulleitung">Cafeteria Hochschulleitung</option>-->
       <option id="facilityBurgerbar">Burgerbar Cafeteria SouthSide</option>
+      <!--<option id="facilityHSOE">Hochschule Oberer Eselsberg</option>-->
       <option id="facilityPrittwitzstr">Mensa Hochschule</option>
     </select>
   </nav>
@@ -55,7 +56,8 @@
   var planOfTheDay;
   var daysArray = [];
   var mensen = {"Mensa Uni":"Mensa", "Bistro":"Bistro", "Cafeteria West":"West", "WestSideDiner":"Diner",
-                "Burgerbar Cafeteria SouthSide":"Burgerbar","Mensa Hochschule":"Prittwitzstr","Cafeteria Hochschulleitung":"Hochschulleitung"};
+                "Burgerbar Cafeteria SouthSide":"Burgerbar","Mensa Hochschule":"Prittwitzstr",
+                "Cafeteria Hochschulleitung":"Hochschulleitung","Hochschule Oberer Eselsberg":"HSOE"};
 
   function init(){
 
@@ -158,6 +160,9 @@
           }
           if ( facility == "Hochschulleitung"){
             printPlan(data.weeks[x].days[y].Hochschulleitung);
+          }
+          if ( facility == "HSOE"){
+            printPlan(data.weeks[x].days[y].HSOE);
           }
         }
         
