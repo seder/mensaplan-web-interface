@@ -8,6 +8,7 @@
   <meta charset="utf-8" />
   <script src="libs/jquery-1.9.1.js"></script>
   <link href="style.css" rel="stylesheet" type="text/css"/>
+  <link href='http://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,400italic rel='stylesheet' type='text/css'>
 </head>
 <body onload="init()">
   <div class="navContainer">
@@ -94,14 +95,13 @@
 
         var noOfWeeks = 1;
         while ( data.weeks[noOfWeeks] != undefined ) noOfWeeks++;
-        console.log(noOfWeeks);
   
         var x,y;
         var found = false;
 
         for ( k=0; k<3; k++ ){
-          for ( i=0; i<noOfWeeks; i++){
-            for ( j=0; j<data.weeks[i].days.length; j++){
+          for ( i=0; i<noOfWeeks; i++ ){
+            for ( j=0; j<data.weeks[i].days.length; j++ ){
               if(data.weeks[i].days[j].date == date){
                 found = true;
                 x = i;
@@ -148,27 +148,27 @@
         }
                      
         if ( found == true ) {
-          if ( facility == "Mensa"){
+          if ( facility == "Mensa" ){
             printPlan(data.weeks[x].days[y].Mensa);
           }
-          if ( facility == "Bistro"){
+          if ( facility == "Bistro" ){
             printPlan(data.weeks[x].days[y].Bistro);
           }
-          if ( facility == "West"){
+          if ( facility == "West" ){
             printPlan(data.weeks[x].days[y].West);
           }
-          if ( facility == "Prittwitzstr"){
+          if ( facility == "Prittwitzstr" ){
             printPlan(data.weeks[x].days[y].Prittwitzstr);
           }
-          if ( facility == "Hochschulleitung"){
+          if ( facility == "Hochschulleitung" ){
             printPlan(data.weeks[x].days[y].Hochschulleitung);
           }
-          if ( facility == "HSOE"){
+          if ( facility == "HSOE" ){
             printPlan(data.weeks[x].days[y].HSOE);
           }
         }
         
-        if ( facility == "Diner" || facility == "Burgerbar"){
+        if ( facility == "Diner" || facility == "Burgerbar" ){
           var url = "/mensaplan/data/mensaplan_static.json";
           $.getJSON(url, function(data){
 
@@ -178,10 +178,10 @@
               weekday = 0;
             }
 
-            if ( facility == "Burgerbar"){
+            if ( facility == "Burgerbar" ){
               printPlan(data.weeks[0].days[weekday].Burgerbar);
             }
-            if ( facility == "Diner"){
+            if ( facility == "Diner" ){
               printPlan(data.weeks[0].days[weekday].Diner);
             }
           });

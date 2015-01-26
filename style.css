@@ -1,5 +1,5 @@
 body{
-  font-family: Liberation Sans, Droid Sans, Helvetica, Verdana, Sans;
+  font-family: 'Fira Sans', Liberation Sans, Droid Sans, Helvetica, Verdana, Sans;
   font-size:1em;
   max-width:1134px;
   background-color: #e5ebee;
@@ -78,11 +78,11 @@ a {
 }
 
 .category{
-  font-weight:bold;
+  font-weight: 600;
 }
 
-.meal{
-
+select {
+  font-family: 'Fira Sans', Liberation Sans, Droid Sans, Helvetica, Verdana, Sans;
 }
 
 #bottom{
@@ -96,6 +96,7 @@ a {
   border-style: solid;
   border-width: 1px;
   border-color: #c6d4de;
+  font-weight: 300;
 }
 
 #selector{
