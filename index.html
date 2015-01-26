@@ -24,7 +24,7 @@
     </select>
   </nav>
   <nav id="bottomNav">
-    <span>
+    <span id="1stWeek">
       <a id="day0" onclick="openDay(0)">Mo</a>
       <a id="day1" onclick="openDay(1)">Di</a>
       <a id="day2" onclick="openDay(2)">Mi</a>
@@ -137,6 +137,8 @@
           }
         } else {        
           document.getElementById('2ndWeek').style.display = "none";
+          document.getElementById('seperator').style.display = "none";
+          document.getElementById('1stWeek').style.width = "100%";
           var dateToAdd = getDateOfISOWeek(data.weeks[0].weekNumber,2015);
           for ( i = 0; i < 5; i++ ){
             daysArray[i] = getISOStringOfDate(dateToAdd);
