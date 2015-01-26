@@ -16,10 +16,11 @@
      <select id="selector">
       <option id="facilityMensa">Mensa Uni</option>
       <option id="facilityBistro">Bistro</option>
+      <option id="facilityCB">Cafeteria B</option>
+      <option id="facilityBurgerbar">Burgerbar Cafeteria SouthSide</option>
       <option id="facilityWest">Cafeteria West</option>
       <option id="facilityDiner">WestSideDiner</option>
       <!--<option id="facilityHochschulleitung">Cafeteria Hochschulleitung</option>-->
-      <option id="facilityBurgerbar">Burgerbar Cafeteria SouthSide</option>
       <!--<option id="facilityHSOE">Hochschule Oberer Eselsberg</option>-->
       <option id="facilityPrittwitzstr">Mensa Hochschule</option>
     </select>
@@ -58,7 +59,8 @@
   var daysArray = [];
   var mensen = {"Mensa Uni":"Mensa", "Bistro":"Bistro", "Cafeteria West":"West", "WestSideDiner":"Diner",
                 "Burgerbar Cafeteria SouthSide":"Burgerbar","Mensa Hochschule":"Prittwitzstr",
-                "Cafeteria Hochschulleitung":"Hochschulleitung","Hochschule Oberer Eselsberg":"HSOE"};
+                "Cafeteria Hochschulleitung":"Hochschulleitung","Hochschule Oberer Eselsberg":"HSOE",
+                "Cafeteria B":"CB"};
 
   function init(){
 
@@ -165,6 +167,9 @@
           }
           if ( facility == "HSOE" ){
             printPlan(data.weeks[x].days[y].HSOE);
+          }
+          if ( facility == "CB" ){
+            printPlan(data.weeks[x].days[y].CB);
           }
         }
         
