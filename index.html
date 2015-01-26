@@ -61,6 +61,7 @@
                 "Burgerbar Cafeteria SouthSide":"Burgerbar","Mensa Hochschule":"Prittwitzstr",
                 "Cafeteria Hochschulleitung":"Hochschulleitung","Hochschule Oberer Eselsberg":"HSOE",
                 "Cafeteria B":"CB"};
+  var weekdays = ["Mo","Di","Mi","Do","Fr","Mo","Di","Mi","Do","Fr"];
 
   function init(){
 
@@ -117,69 +118,75 @@
           else break;
         }
 
-        if ( noOfWeeks >= 2 ){
-          var mon1 = getDateOfISOWeek(data.weeks[0].weekNumber,2015);
-          var mon2 = getDateOfISOWeek(data.weeks[1].weekNumber,2015);
-          if (mon2<mon1) { // switch if weeks are out of order
-            tmp = mon1;
-            mon1 = mon2;
-            mon2 = tmp;  
-          }
-          var dateToAdd = mon1;
-          for ( i = 0; i < 5; i++ ){
-            daysArray[i] = getISOStringOfDate(dateToAdd);
-            document.getElementById("day"+i).textContent = dateToAdd.getDate() +  " " + document.getElementById("day"+i).textContent;
-            dateToAdd = new Date(dateToAdd.getTime() + 24 * 60 * 60 * 1000);
-          }
-          dateToAdd = mon2;
-          for ( i = 5; i < 10; i++ ){
-            daysArray[i] = getISOStringOfDate(dateToAdd);
-            document.getElementById("day"+i).textContent = dateToAdd.getDate() +  " " +document.getElementById("day"+i).textContent;
-            dateToAdd = new Date(dateToAdd.getTime() + 24 * 60 * 60 * 1000);
-          }
-        } else {        
-          document.getElementById('2ndWeek').style.display = "none";
-          document.getElementById('seperator').style.display = "none";
-          document.getElementById('1stWeek').style.width = "100%";
-          var dateToAdd = getDateOfISOWeek(data.weeks[0].weekNumber,2015);
-          for ( i = 0; i < 5; i++ ){
-            daysArray[i] = getISOStringOfDate(dateToAdd);
-            document.getElementById("day"+i).textContent = dateToAdd.getDate() +  " " +document.getElementById("day"+i).textContent;
-            dateToAdd = new Date(dateToAdd.getTime() + 24 * 60 * 60 * 1000);
-          }
-        }
-                     
-        if ( found == true ) {
-          if ( facility == "Mensa" ){
-            printPlan(data.weeks[x].days[y].Mensa);
-          }
-          if ( facility == "Bistro" ){
-            printPlan(data.weeks[x].days[y].Bistro);
-          }
-          if ( facility == "West" ){
-            printPlan(data.weeks[x].days[y].West);
-          }
-          if ( facility == "Prittwitzstr" ){
-            printPlan(data.weeks[x].days[y].Prittwitzstr);
-          }
-          if ( facility == "Hochschulleitung" ){
-            printPlan(data.weeks[x].days[y].Hochschulleitung);
-          }
-          if ( facility == "HSOE" ){
-            printPlan(data.weeks[x].days[y].HSOE);
-          }
-          if ( facility == "CB" ){
-            printPlan(data.weeks[x].days[y].CB);
+        reset();
+
+        if ( daysArray[0] == undefined ){//do this only when landing on page
+          if ( noOfWeeks >= 2 ){
+            var mon1 = getDateOfISOWeek(data.weeks[0].weekNumber,2015);
+            var mon2 = getDateOfISOWeek(data.weeks[1].weekNumber,2015);
+            if (mon2<mon1) { // switch if weeks are out of order
+              tmp = mon1;
+              mon1 = mon2;
+              mon2 = tmp;  
+            }
+            var dateToAdd = mon1;
+            for ( i = 0; i < 5; i++ ){
+              daysArray[i] = getISOStringOfDate(dateToAdd);
+              document.getElementById("day"+i).textContent = dateToAdd.getDate() +  " " + document.getElementById("day"+i).textContent;
+              dateToAdd = new Date(dateToAdd.getTime() + 24 * 60 * 60 * 1000);
+            }
+            dateToAdd = mon2;
+            for ( i = 5; i < 10; i++ ){
+              daysArray[i] = getISOStringOfDate(dateToAdd);
+              document.getElementById("day"+i).textContent = dateToAdd.getDate() +  " " +document.getElementById("day"+i).textContent;
+              dateToAdd = new Date(dateToAdd.getTime() + 24 * 60 * 60 * 1000);
+            }
+          } else {        
+            document.getElementById('2ndWeek').style.display = "none";
+            document.getElementById('seperator').style.display = "none";
+            document.getElementById('1stWeek').style.width = "100%";
+            var dateToAdd = getDateOfISOWeek(data.weeks[0].weekNumber,2015);
+            for ( i = 0; i < 5; i++ ){
+              daysArray[i] = getISOStringOfDate(dateToAdd);
+              document.getElementById("day"+i).textContent = dateToAdd.getDate() +  " " +document.getElementById("day"+i).textContent;
+              dateToAdd = new Date(dateToAdd.getTime() + 24 * 60 * 60 * 1000);
+            }
           }
         }
-        
-        if ( facility == "Diner" || facility == "Burgerbar" ){
+
+        if ( !(facility == "Diner" || facility == "Burgerbar") ){                       
+          if ( found == true ) {
+            if ( facility == "Mensa" ){
+              printPlan(data.weeks[x].days[y].Mensa);
+            }
+            if ( facility == "Bistro" ){
+              printPlan(data.weeks[x].days[y].Bistro);
+            }
+            if ( facility == "West" ){
+              printPlan(data.weeks[x].days[y].West);
+            }
+            if ( facility == "Prittwitzstr" ){
+              printPlan(data.weeks[x].days[y].Prittwitzstr);
+            }
+            if ( facility == "Hochschulleitung" ){
+              printPlan(data.weeks[x].days[y].Hochschulleitung);
+            }
+            if ( facility == "HSOE" ){
+              printPlan(data.weeks[x].days[y].HSOE);
+            }
+            if ( facility == "CB" ){
+              printPlan(data.weeks[x].days[y].CB);
+            }
+          }
+        }
+        else
+        {
           var url = "/mensaplan/data/mensaplan_static.json";
           $.getJSON(url, function(data){
 
             weekday = new Date(date).getDay()-1;
 
-            if ( weekday < 0 ||  weekday == 5 ){
+            if ( weekday < 0 || weekday == 5 ){
               weekday = 0;
             }
 
@@ -201,7 +208,7 @@
 
   document.getElementById("selector").onchange = function() {
      openPage(this.value);
-     return false
+     return false;
   };
 
   function selectFacility() {
@@ -242,13 +249,13 @@
   function openPage(str){
     facility = mensen[str]; 
     window.location.assign('#'+facility+"&"+date);
-    window.location.reload(true);
+    init();
   }  
 
   function openDay(idx){
     date = daysArray[idx];
     window.location.assign('#'+facility+"&"+date);
-    window.location.reload(true);
+    init();
   }
 
   function getISOStringOfDate(date2){
@@ -276,6 +283,14 @@
       else
           ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
       return ISOweekStart;
+  }
+  
+  function reset(){        
+    for ( i = 0; i<10; i++ ){
+      //document.getElementById("day"+i).textContent = weekdays[i];
+      document.getElementById("day"+i).className = "";
+    }
+    $( "div" ).remove( ".mealFrame" );
   }
   </script>
 </body>
