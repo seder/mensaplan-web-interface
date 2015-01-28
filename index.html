@@ -276,13 +276,13 @@
 
   function openPage(str){
     facility = mensen[str]; 
-    window.location.assign('#'+facility+"&"+date);
+    setAnchor(facility,date,refresh); 
     init();
   }  
 
   function openDay(idx){
     date = daysArray[idx];
-    window.location.assign('#'+facility+"&"+date);
+    setAnchor(facility,date,refresh); 
     init();
   }
 
@@ -325,7 +325,7 @@
     for ( i = 0; i<2; i++) {
       var tomorrow = getISOStringOfDate(new Date(new Date(date).getTime() + (i+1) * 24 * 60 * 60 * 1000));
       if ( $.inArray(tomorrow, daysArray) != -1 ){
-        window.location.assign('#'+facility+"&"+tomorrow);
+        setAnchor(facility,tomorrow,refresh); 
         init();
         break;
       }
@@ -336,11 +336,18 @@
     for ( i = 0; i<2; i++) {
       var yesterday = getISOStringOfDate(new Date(new Date(date).getTime() - (i+1) * 24 * 60 * 60 * 1000));
       if ( $.inArray(yesterday, daysArray) != -1 ){
-        window.location.assign('#'+facility+"&"+yesterday);
+        setAnchor(facility,yesterday,refresh); 
         init();
         break;
       }
     }
+  }
+
+  function setAnchor(facility,yesterday,refresh){
+    if ( refresh != undefined )
+      window.location.assign('#'+facility+"&"+yesterday+"&refresh");
+    else
+      window.location.assign('#'+facility+"&"+yesterday);
   }
 
   document.addEventListener('touchstart', handleTouchStart, false);        
