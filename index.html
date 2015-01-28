@@ -55,6 +55,7 @@
 
   var facility;
   var date;
+  var refresh;
   var planOfTheDay;
   var daysArray = [];
   var mensen = {"Mensa Uni":"Mensa", "Bistro":"Bistro", "Cafeteria West":"West", "WestSideDiner":"Diner",
@@ -67,10 +68,43 @@
 
     // get facility and date for the plan by parsing the anchor
     var anchor = window.location.hash.substr(1);
-    if ( anchor == "" ){
-      //show plan for today
+    if ( anchor == "" ){ // default: Mensa, today
       facility = 'Mensa';
-      var today = new Date();
+      date = getDayString(0);
+    } else {
+      facility = anchor.split('&')[0];
+      date = anchor.split('&')[1];
+      refresh = anchor.split('&')[2];
+      if ( date == "today" || date == "heute" || date == undefined )
+        date = getDayString(0);
+      if ( date == "tomorrow" || date == "morgen" )        
+        date = getDayString(1);
+      if ( date == "yesterday" || date == "gestern" )        
+        date = getDayString(-1);      
+      if ( date == "next" )// shows today's plan during opening hours, 
+                           // tomorrows when facility is closed 
+                           // (exact to one hour)
+      { 
+        var now = new Date().getHours();
+        var closingTime = 14;
+        if ( facility == "bistro" ) closingTime = 19;
+        if ( now < closingTime )
+         date = getDayString(0);
+        else         
+         date = getDayString(1);
+        console.log(closingTime + " " + now);
+      }
+    }    
+    if ( refresh != undefined ) timedRefresh(10 * 60 * 1000);//every 10 minutes
+    getFoodPlan();
+  }
+
+  function timedRefresh(timeoutPeriod) {
+	  setTimeout("reset();init();",timeoutPeriod);
+  }
+
+  function getDayString(offset){
+      var today = new Date(new Date().getTime() + offset * 24 * 60 * 60 * 1000);
       var dd = today.getDate();
       var mm = today.getMonth()+1; //January is 0!
 
@@ -83,13 +117,7 @@
       } 
 
       var yyyy = today.getFullYear();
-      date = yyyy + '-' + mm + '-' + dd;
-    } else {
-      facility = anchor.split('&')[0];
-      date = anchor.split('&')[1];
-    }
-    
-    getFoodPlan();
+      return yyyy + '-' + mm + '-' + dd;
   }
 
   function getFoodPlan(){
