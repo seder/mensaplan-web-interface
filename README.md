@@ -1,6 +1,6 @@
 Web UI for the canteens of Ulm University and other institutions where the Studierendenwerk Ulm organises the food supply.
 
-This UI is active in test mode and can be found here: http://uni-ulm.de/mensaplan/beta
+This UI is in use and can be found here: http://uni-ulm.de/mensaplan
 
 # Usage
 
