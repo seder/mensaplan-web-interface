@@ -25,28 +25,32 @@
 
     "category": "Veggie: Sunny Veggie Burger",
     "meal": "mit Ruccola und Sauerrahm-Dip",
-    "price": "3,50€ | Menü: 4,95€"
+    "price": "3,50€ | Menü: 4,95€",
+    "contains": "veggie"
 
 },
 {
 
     "category": "Fleisch: Long Asia Chicken Burger",
     "meal": "mit knackigem Eisbergsalat und Sweet Chili-Dip",
-    "price": "3,50€ | Menü: 4,75€"
+    "price": "3,50€ | Menü: 4,75€",
+    "contains": "poultry"
 
 },
 {
 
     "category": "Extra: Crisp Cut Potatoes",
     "meal": "knusprige Kartoffel-Gitter mit mildem Salsageschmack",
-    "price": "1,80€"
+    "price": "1,80€",
+    "contains": "veggie"
 
 },
 {
 
     "category": "Portion Pommes",
     "meal": "mit Ketchup oder Mayonnaise",
-    "price": "1,50€"
+    "price": "1,50€",
+    "contains": "veggie"
 
 }
     ],
@@ -106,35 +110,40 @@
 
     "category": "Veggie: Hanfburger",
     "meal": "der etwas andere Burger",
-    "price": "3,50€ | Menü: 4,95€"
+    "price": "3,50€ | Menü: 4,95€",
+    "contains": "veggie"
 
 },
 {
 
     "category": "Fleisch: Steakhouse Burger",
     "meal": "der Klassiker mit Fleisch und BBQ-Dip",
-    "price": "3,90€ | Menü: 5,35€"
+    "price": "3,90€ | Menü: 5,35€",
+    "contains": "beef"
 
 },
 {
 
     "category": "Fleisch: Big Steakhouse Burger",
     "meal": "mit doppelt Fleisch und BBQ-Dip",
-    "price": "4,90€ | Menü: 6,35€"
+    "price": "4,90€ | Menü: 6,35€",
+    "contains": "beef"
 
 },
 {
 
     "category": "Extra: Potato Wedges",
     "meal": "würzige Kartoffelspalten mit Sour Cream (Sauerrahm)",
-    "price": "1,80€"
+    "price": "1,80€",
+    "contains": "veggie"
 
 },
 {
 
     "category": "Portion Pommes",
     "meal": "mit Ketchup oder Mayonnaise",
-    "price": "1,50€"
+    "price": "1,50€",
+    "contains": "veggie"
 
 }
     ],
@@ -195,28 +204,32 @@
 
     "category": "Veggie: Texican Burger",
     "meal": "Reis mit Hirtenkäse, Kidneybohnen und Mais",
-    "price": "3,90€ | Menü: 5,35€"
+    "price": "3,90€ | Menü: 5,35€",
+    "contains": "veggie"
 
 },
 {
 
     "category": "Fleisch: Big Rösti Burger",
     "meal": "der Berg grüßt mit knusprigem Bacon und Käse",
-    "price": "4,30€ | Menü: 5,75€"
+    "price": "4,30€ | Menü: 5,75€",
+    "contains": "pig"
 
 },
 {
 
     "category": "Extra: Chicken Nuggets",
     "meal": "würzig paniert und goldgelb gebacken",
-    "price": "6 Stück 2,50€ | 9 Stück 3,50€"
+    "price": "6 Stück 2,50€ | 9 Stück 3,50€",
+    "contains": "poultry"
 
 },
 {
 
     "category": "Portion Pommes",
     "meal": "mit Ketchup oder Mayonnaise",
-    "price": "1,50€"
+    "price": "1,50€",
+    "contains": "veggie"
 
 }
     ],
@@ -270,28 +283,32 @@
 
     "category": "Veggie: Couscous Burger",
     "meal": "mit hausgemachtem Bratling, Grillgemüse und Curry-Dip",
-    "price": "3,90€ | Menü: 5,35€"
+    "price": "3,90€ | Menü: 5,35€",
+    "contains": "veggie"
 
 },
 {
 
     "category": "Fleisch: Onion Beef Burger",
     "meal": "sehr lecker mit gebackenen Zwiebelringen und Knobi-Dip",
-    "price": "4,30€ | Menü: 5,75€"
+    "price": "4,30€ | Menü: 5,75€",
+    "contains": "beef"
 
 },
 {
 
     "category": "Extra: Twister Pommes",
     "meal": "spiralig geschnittene, gedrehte Pommes, knusprig frittiert",
-    "price": "1,80€"
+    "price": "1,80€",
+    "contains": "veggie"
 
 },
 {
 
     "category": "Portion Pommes",
     "meal": "mit Ketchup oder Mayonnaise",
-    "price": "1,50€"
+    "price": "1,50€",
+    "contains": "veggie"
 
 }
     ],
@@ -352,28 +369,32 @@
 
     "category": "Veggie: Feta-Burger",
     "meal": "mit gebackenem Feta und Zaziki-Dip",
-    "price": "3,90€ | Menü: 5,35€"
+    "price": "3,90€ | Menü: 5,35€",
+    "contains": "veggie"
 
 },
 {
 
     "category": "Fleisch: South-Side Burger",
     "meal": "mit Pulled Pork und weiteren Leckereien",
-    "price": "3,90€ | Menü: 5,35€"
+    "price": "3,90€ | Menü: 5,35€",
+    "contains": "pig"
 
 },
 {
 
     "category": "Extra: Mozarella Sticks",
     "meal": "knusprig gebacken",
-    "price": "6 Stück 3,30€ | 9 Stück 4,50€"
+    "price": "6 Stück 3,30€ | 9 Stück 4,50€",
+    "contains": "veggie"
 
 },
 {
 
     "category": "Portion Pommes",
     "meal": "mit Ketchup oder Mayonnaise",
-    "price": "1,50€"
+    "price": "1,50€",
+    "contains": "veggie"
 
 }
     ],
