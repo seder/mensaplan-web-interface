@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<meta name="viewport" content="width=device-width"> 
-<meta name="theme-color" content="#9bbbca">
-<link rel="icon" sizes="192x192" href="img/logo.png">
-<html>
-<head>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"> 
+<meta name="theme-color" content="#7a99ac">
+<link rel="icon" sizes="192x192" href="http://www.uni-ulm.de/mensaplan/img/logo.png">
+
+
   <title>
   Mensaplan der Uni Ulm by FS-ET
   </title>
-  <meta charset="utf-8" />
-  <script src="libs/jquery-1.9.1.js"></script>
-  <link href="style.css" rel="stylesheet" type="text/css"/>
+  <meta charset="utf-8">
+  <script src="index_files/jquery-1.js"></script>
+  <link href="index_files/style.css" rel="stylesheet" type="text/css">
 </head>
-<body onload="init()" onKeyDown="pressed(event)">
+<body onload="init()" onkeydown="pressed(event)" onhashchange="init()">
   <div class="navContainer">
   <nav id="topNav">
      <select id="selector">
-      <option id="facilityMensa">Mensa Uni</option>
+      <option id="facilityMensa" selected="selected">Mensa Uni</option>
       <option id="facilityBistro">Bistro</option>
       <option id="facilityBurgerbar">Burgerbar Cafeteria SouthSide</option>
       <option id="facilityCB">Cafeteria B</option>
@@ -27,25 +28,25 @@
     </select>
   </nav>
   <nav id="bottomNav">
-    <span id="1stWeek">
-      <a class="ahover" id="day0" onclick="openDay(0)">Mo</a>
-      <a class="ahover" id="day1" onclick="openDay(1)">Di</a>
-      <a class="ahover" id="day2" onclick="openDay(2)">Mi</a>
-      <a class="ahover" id="day3" onclick="openDay(3)">Do</a>
-      <a class="ahover" id="day4" onclick="openDay(4)">Fr</a>
+    <span id="1stWeek" style="width: 100%;">
+      <a class="" id="day0" onclick="openDay(0)">13 Mo</a>
+      <a class="" id="day1" onclick="openDay(1)">14 Di</a>
+      <a class="active" id="day2" onclick="openDay(2)">15 Mi</a>
+      <a class="" id="day3" onclick="openDay(3)">16 Do</a>
+      <a class="" id="day4" onclick="openDay(4)">17 Fr</a>
     </span>
-    <span id="seperator">|</span>
-    <span id="2ndWeek">
-      <a class="ahover" id="day5" onclick="openDay(5)">Mo</a>
-      <a class="ahover" id="day6" onclick="openDay(6)">Di</a>
-      <a class="ahover" id="day7" onclick="openDay(7)">Mi</a>
-      <a class="ahover" id="day8" onclick="openDay(8)">Do</a>
-      <a class="ahover" id="day9" onclick="openDay(9)">Fr</a>
+    <span id="seperator" style="display: none;">|</span>
+    <span id="2ndWeek" style="display: none;">
+      <a class="" id="day5" onclick="openDay(5)">Mo</a>
+      <a class="" id="day6" onclick="openDay(6)">Di</a>
+      <a class="" id="day7" onclick="openDay(7)">Mi</a>
+      <a class="" id="day8" onclick="openDay(8)">Do</a>
+      <a class="" id="day9" onclick="openDay(9)">Fr</a>
     </span>
   </nav>
   </div>
   <div id="plan">
-  </div>
+  <div class="mealFrame"><div class="category">Suppe</div><div class="meal" style="width: 100%;">Grüne Bohnensuppe</div><div class="price"></div></div><div class="mealFrame"><div class="category">Eintopf</div><div class="meal" style="width: 100%;">Soljanka (Russischer Wursteintopf) ( S, R) Semmel ( W/R)</div><div class="price"></div></div><div class="mealFrame"><div class="category">Schneller Teller</div><div class="meal" style="width: 100%;">Pasta alla Carbonara ( S, W)</div><div class="price"></div></div><div class="mealFrame"><div class="category">Gut und Günstig</div><div class="meal" style="width: 100%;">Hähnchenbrust Piccata Milanese ( G, W) fruchtige Tomatensoße</div><div class="price"></div></div><div class="mealFrame"><div class="category">Prima Klima</div><div class="meal" style="width: 100%;">Mediterraner Gemüsegulasch mit Soja und Ebly ( W)</div><div class="price"></div></div><div class="mealFrame"><div class="category">Gourmet</div><div class="meal" style="width: 100%;">Schweinerückensteak vom Schwäbisch-Hällischen Schwein "Hausfrauen Art" ( S, ) Bratensoße ( W, G)</div><div class="price"></div></div><div class="mealFrame"><div class="category">Wok und Grill</div><div class="meal" style="width: 100%;">Fajita Pueblo“( S, W) (Schweinefl., Bohnen, Paprika, Mais, Speck, Chili-Koriandersoße</div><div class="price"></div></div><div class="mealFrame"><div class="category">Buffet</div><div class="meal" style="width: 100%;">Snackbuffet Salatbuffet</div><div class="price"></div></div></div>
   <div class="navContainer">
     <div id="bottom">
       <a href="https://github.com/seder/mensaplan-web-interface">Github</a> |
@@ -98,7 +99,7 @@
       {
         $.getJSON(urlStaticJSON, function(staticData){
 
-          var weekday = new Date(date).getDay()-1;
+          weekday = new Date(date).getDay()-1;
 
           if ( weekday == -1 || weekday == 5 ){// weekend --> show monday
             weekday = 0;
@@ -169,15 +170,16 @@
   }
 
   function getCoordinatesInJSON(date,data,noOfWeeks){ 
+    var x,y;
     var originalDate = date;
     var found = false;
-    for ( var k=0; k<3; k++ ){
-      for ( var i=0; i<noOfWeeks; i++ ){
-        for ( var j=0; j<data.weeks[i].days.length; j++ ){
+    for ( k=0; k<3; k++ ){
+      for ( i=0; i<noOfWeeks; i++ ){
+        for ( j=0; j<data.weeks[i].days.length; j++ ){
           if(data.weeks[i].days[j].date == date){
             found = true;
-            var week = i;
-            var day = j;
+            week = i;
+            day = j;
           } 
         }
       }
@@ -189,7 +191,7 @@
     if ( found == false ){// failsafe: requested date and the next two days not
                           // found, try today. If that doesn't work either
                           // just take the first one.
-      var today = getISOStringOfDate(new Date());
+      today = getISOStringOfDate(new Date());
       if ( date != today && originalDate != today ){
         return getCoordinatesInJSON(today, data, noOfWeeks);
       } else {
@@ -210,7 +212,7 @@
   }
 
   function timedRefresh(timeoutPeriod) {
-	  setTimeout("init();",timeoutPeriod);
+	  setInterval("init();",timeoutPeriod);
   }
 
   function getDayString(offset){
@@ -220,7 +222,7 @@
 
   function addDateToWeekdays(startDate,startIndex){      
    var dateToAdd = startDate;
-   for ( var i = startIndex; i < startIndex+5; i++ ){
+   for ( i = startIndex; i < startIndex+5; i++ ){
       daysArray[i] = getISOStringOfDate(dateToAdd);
       var dayToShow = dateToAdd.getDate();
       if ( dayToShow <=9 ) dayToShow = "0"+dayToShow;
@@ -275,6 +277,7 @@
     } else {
         var tr = document.createElement('div');
         tr.className = "mealFrame";
+        var mealWidth = "100%";
         var td = document.createElement('div');
         td.className = "category";          
         td.appendChild(document.createTextNode("geschlossen"));
@@ -287,13 +290,11 @@
   document.getElementById("selector").onchange = function() {
     facility = mensen[this.value]; 
     setAnchor(facility,date,refresh); 
-    init();
   };
 
   function openDay(idx){
     date = daysArray[idx];
     setAnchor(facility,date,refresh); 
-    init();
   }
 
   function getISOStringOfDate(date2){
@@ -312,7 +313,7 @@
       return yyyy + '-' + mm + '-' + dd;
   }  
 
-  function getDateOfISOWeek(weekNumber) {//TODO:test this with different years
+  function getDateOfISOWeek(weekNumber) {
     var year = new Date().getFullYear();
     var simple = new Date(year, 0, 1 + (weekNumber - 1) * 7);
     var dayOfWeek = simple.getDay();
@@ -325,7 +326,7 @@
   }
   
   function reset(){        
-    for ( var i = 0; i<10; i++ ){
+    for ( i = 0; i<10; i++ ){
       document.getElementById("day"+i).className = "";
     }
     $( "div" ).remove( ".mealFrame" );
@@ -344,11 +345,10 @@
 
   // direction: -1 for yesterday, 1 for tomorrow
   function adjacentDay(direction){
-     for ( var i = 0; i<3; i++) {
+     for ( i = 0; i<3; i++) {
       var day = getISOStringOfDate(new Date(new Date(date).getTime() + direction * (i+1) * 24 * 60 * 60 * 1000));
       if ( $.inArray(day, daysArray) != -1 ){
-        setAnchor(facility,day,refresh); 
-        init();
+        setAnchor(facility,day,refresh);
         break;
       }
     }
@@ -402,7 +402,9 @@
         adjacentDay(1);
     }
   }
+
   </script>
-  <img src="http://mensaplan.fs-et.de/1x1.png" />
-</body>
-</html>
+  <img src="index_files/1x1.png">
+
+
+</body></html>
