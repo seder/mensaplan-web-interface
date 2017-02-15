@@ -98,7 +98,7 @@
       {
         $.getJSON(urlStaticJSON, function(staticData){
 
-          weekday = new Date(date).getDay()-1;
+          var weekday = new Date(date).getDay()-1;
 
           if ( weekday == -1 || weekday == 5 ){// weekend --> show monday
             weekday = 0;
@@ -169,16 +169,15 @@
   }
 
   function getCoordinatesInJSON(date,data,noOfWeeks){ 
-    var x,y;
     var originalDate = date;
     var found = false;
-    for ( k=0; k<3; k++ ){
-      for ( i=0; i<noOfWeeks; i++ ){
-        for ( j=0; j<data.weeks[i].days.length; j++ ){
+    for ( var k=0; k<3; k++ ){
+      for ( var i=0; i<noOfWeeks; i++ ){
+        for ( var j=0; j<data.weeks[i].days.length; j++ ){
           if(data.weeks[i].days[j].date == date){
             found = true;
-            week = i;
-            day = j;
+            var week = i;
+            var day = j;
           } 
         }
       }
@@ -190,7 +189,7 @@
     if ( found == false ){// failsafe: requested date and the next two days not
                           // found, try today. If that doesn't work either
                           // just take the first one.
-      today = getISOStringOfDate(new Date());
+      var today = getISOStringOfDate(new Date());
       if ( date != today && originalDate != today ){
         return getCoordinatesInJSON(today, data, noOfWeeks);
       } else {
@@ -221,7 +220,7 @@
 
   function addDateToWeekdays(startDate,startIndex){      
    var dateToAdd = startDate;
-   for ( i = startIndex; i < startIndex+5; i++ ){
+   for ( var i = startIndex; i < startIndex+5; i++ ){
       daysArray[i] = getISOStringOfDate(dateToAdd);
       var dayToShow = dateToAdd.getDate();
       if ( dayToShow <=9 ) dayToShow = "0"+dayToShow;
@@ -276,7 +275,6 @@
     } else {
         var tr = document.createElement('div');
         tr.className = "mealFrame";
-        var mealWidth = "100%";
         var td = document.createElement('div');
         td.className = "category";          
         td.appendChild(document.createTextNode("geschlossen"));
@@ -327,7 +325,7 @@
   }
   
   function reset(){        
-    for ( i = 0; i<10; i++ ){
+    for ( var i = 0; i<10; i++ ){
       document.getElementById("day"+i).className = "";
     }
     $( "div" ).remove( ".mealFrame" );
@@ -346,7 +344,7 @@
 
   // direction: -1 for yesterday, 1 for tomorrow
   function adjacentDay(direction){
-     for ( i = 0; i<3; i++) {
+     for ( var i = 0; i<3; i++) {
       var day = getISOStringOfDate(new Date(new Date(date).getTime() + direction * (i+1) * 24 * 60 * 60 * 1000));
       if ( $.inArray(day, daysArray) != -1 ){
         setAnchor(facility,day,refresh); 
